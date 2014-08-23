@@ -18,7 +18,7 @@ If you need to citing this thesis, here is its BibTeX reference:
 @book{camacho2014machine,
   title = {Machine Learning: Un enfoque práctico},
   author = {Camacho, José M.},
-  director = {Sancho Caparrini, Fernando},
+  director = {Sancho, Fernando},
   url = {https://github.com/josemazo/bsc-cs-thesis},
   year = {2014}
 }
