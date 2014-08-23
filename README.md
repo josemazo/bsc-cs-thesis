@@ -1,3 +1,9 @@
+<!--
+
+VISIT https://github.com/josemazo/bmo FOR SEE THIS FILE FORMATTED
+
+-->
+
 bsc-cs-thesis
 =============
 
@@ -14,6 +20,6 @@ If you need to citing this thesis, here is its BibTeX reference:
   author = {Camacho Sosa, José Manuel},
   director = {Sancho Caparrini, Fernando},
   url = {https://github.com/josemazo/bsc-cs-thesis},
-  year = {2014},
+  year = {2014}
 }
 ```
