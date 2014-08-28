@@ -7,7 +7,7 @@ VISIT https://github.com/josemazo/bmo FOR SEE THIS FILE FORMATTED
 bsc-cs-thesis
 =============
 
-This repository holds the LaTeX source code of a B.Sc. Computer Science thesis called `Machine Learning: Un enfoque práctico` in its original language, Spanish, being translated as `Machine Learning: A practical approach`. Its author is José M. Camacho, and was directed by Fernando Sancho Ph.D. The thesis's title is a reference to a great book by [Russel and Norving](http://aima.cs.berkeley.edu/).
+This repository holds the LaTeX source code of a B.Sc. Computer Science thesis called `Machine Learning: Un enfoque práctico` in its original language, Spanish, being translated as `Machine Learning: A practical approach`. Its author is José M. Camacho, and was directed by Fernando Sancho Ph.D., both of them from `Universidad de Sevilla`, University of Seville. The thesis's title is a reference to a great book by [Russel and Norving](http://aima.cs.berkeley.edu/).
 
 The document, which can be download [here](https://github.com/josemazo/bsc-cs-thesis/releases/download/deliverable/jose-m-camacho-bsc-cs-thesis.pdf), presents an inital practical and personal approach to machine learning. During the thesis, these projects were created:
 * [BMO](https://github.com/josemazo/bmo): A Machine Learning toolbox based on Docker and IPython Notebook.
