@@ -1,0 +1,354 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Thanks to Juan Galán Páez Ph.D. for this file. %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%
+%% PART I %%
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Aditional packages %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Acutes
+\usepackage{fancyvrb}
+
+% More math symbols
+\usepackage{fancyhdr}
+
+% Spanish titles
+\usepackage[spanish, activeacute, es-tabla]{babel}
+
+% Multiple figures side-by-side
+\usepackage{subcaption}
+
+% Images in color
+\usepackage{color}
+
+% Rotate tables: \begin{sideways} -> 90 degrees
+\usepackage{rotating}
+
+% TODO notes
+\usepackage[colorinlistoftodos, textwidth=29mm, spanish]{todonotes}
+
+% Show LaTeX style logos
+\usepackage{hologo}
+
+%%%%%%%%%%%%%%%%%
+%% Page format %%
+%%%%%%%%%%%%%%%%%
+
+\voffset -5mm
+\cfoot{}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RE]{{\small \nouppercase{\leftmark}}}
+\fancyhead[LO]{{\small \nouppercase{\rightmark}}}
+\fancyhead[LE,RO]{\thepage}
+
+\setlength{\headheight}{15pt}
+
+\parskip 1.5ex
+
+\voffset -0,2cm
+\textheight 21.5cm
+\textwidth 14.2cm
+
+\oddsidemargin 1cm
+\evensidemargin 0,5cm
+
+\let\headwidth\textwidth
+
+\setlength{\marginparwidth}{27mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Numbered boxes for code %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\hsbw}
+
+\newcounter{sesioncount}
+\setcounter{sesioncount}{0}
+
+% No numbered
+\newenvironment{sesion*}
+  {\begin{flushleft}
+   \setlength{\hsbw}{\linewidth}
+   \addtolength{\hsbw}{-\arrayrulewidth}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \begin{tabular}{@{}|c@{}|@{}}\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace{2mm}
+   \begingroup}
+  {\endgroup\vspace{-3mm}
+   \end{minipage} \\
+   \hline
+   \end{tabular}
+   \end{flushleft}}
+
+% Numbered and regular
+\newenvironment{sesion}
+  {\begin{flushleft}
+   \setlength{\hsbw}{\linewidth}
+   \begin{tabular}{@{}|c@{}|@{}}\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace*{4mm}
+   \em
+   \begingroup}
+  {\endgroup \vspace{4mm}
+   \end{minipage} \\
+   \hline
+   \end{tabular}
+   \end{flushleft}}
+
+% Opened in the bottom
+\newenvironment{sesion+}
+  {\begin{flushleft}
+ % \refstepcounter{sesioncount}
+   \setlength{\hsbw}{\linewidth}
+   \addtolength{\hsbw}{-\arrayrulewidth}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \begin{tabular}{@{}|c@{}|@{}}\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace*{-.5pt}
+   \begin{flushright}
+   \rule{0.01in}{.15in}\rule{0.3in}{0.01in}\hspace{-0.35in}
+   \raisebox{0.04in}{\makebox[0.3in][c]{\footnotesize \thesesioncount}}
+   \end{flushright}
+   \vspace*{-.47in}
+   \begingroup}
+  {\endgroup\vspace{-3mm}
+   \end{minipage} \\
+   %\hline
+   \end{tabular}
+   \end{flushleft}}
+
+% Opened in the top
+\newenvironment{sesion-}
+  {\begin{flushleft}
+   \setlength{\hsbw}{\linewidth}
+   \addtolength{\hsbw}{-\arrayrulewidth}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \begin{tabular}{@{}|c@{}|@{}}%\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace{2mm}
+   \begingroup}
+  {\endgroup\vspace{-3mm}
+   \end{minipage} \\
+   \hline
+   \end{tabular}
+   \end{flushleft}}
+
+\newenvironment{sesionx}
+  {\begin{flushleft}
+   \setlength{\hsbw}{\linewidth}
+   \addtolength{\hsbw}{-\arrayrulewidth}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \begin{tabular}{@{}|c@{}|@{}}%\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace{2mm}
+   \begingroup}
+  {\endgroup\vspace{-3mm}
+   \end{minipage} \\
+   %\hline
+   \end{tabular}
+   \end{flushleft}}
+
+\newcommand{\boxref}[1]
+  {\fbox{\footnotesize \phantom{4}\!\!\!\!\!\! \ref{#1}}}
+
+\newcommand{\boxrefdos}[2]
+  {\fbox{\footnotesize \phantom{4}\!\!\!\!\!\! \ref{#1}-\ref{#2}}}
+
+\newcommand{\codeindex}[1]{\index{#1@{\tt #1}}}
+
+\newcommand{\labelindex}[1]{\label{#1}\codeindex{#1}}
+
+%%%%%%%%%%%%
+%% Macros %%
+%%%%%%%%%%%%
+
+\newcommand{\te}{\vdash}
+\newcommand{\lif}{\rightarrow}
+\newcommand{\m}{\models}
+\renewcommand{\le}{\exists}
+\newcommand{\la}{\forall}
+\newcommand{\liff}{\leftrightarrow}
+\newcommand{\Lor}{\bigvee}
+\newcommand{\Land}{\bigwedge}
+
+%%%%%%%%%%%%%%
+%% New line %%
+%%%%%%%%%%%%%%
+
+\newcommand{\nl}{\newline}
+
+\newcommand{\dip}{\searrow\!\!\!\!\nwarrow}
+\newcommand{\dis}{\nearrow\!\!\!\!\swarrow}
+\newcommand{\udp}{\nwarrow}
+\newcommand{\ddp}{\searrow}
+\newcommand{\uds}{\nearrow}
+\newcommand{\dds}{\swarrow}
+
+\newcommand{\ua}{\uparrow}
+\newcommand{\da}{\downarrow}
+
+\newcommand{\uda}{\uparrow\!\!\downarrow}
+
+\usepackage{cmtt}
+\renewcommand{\ttdefault}{cmtt}
+
+
+%%%%%%%%%%%%%
+%% PART II %%
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Mininimum packages needed %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8x]{inputenc}
+\usepackage[hidelinks]{hyperref}  % Regular version
+% \usepackage{hyperref}  % Version with links in boxes
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{theorem}
+\usepackage{amssymb}
+\usepackage{lscape}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{appendix}
+\usepackage{chngpage}
+\usepackage{url}  % For URL references
+\usepackage{array}  % For tables
+\usepackage{multirow}  % For tables too
+
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{defi}{{\sc Definición}}
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{corollary}[theorem]{Corolario}
+\newtheorem{definition}[theorem]{Definición}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages configuration %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\lstlistingname{Listado}                 %  default is Listing
+\renewcommand\lstlistlistingname{Índice de listados}  %  default is Listings
+
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{codegreen}{rgb}{0, 0.6, 0}
+\definecolor{codegray}{rgb}{0.3, 0.3, 0.3}
+
+% Every style is an extension of this one
+\lstdefinestyle{simple}{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  frame=leftline,
+  framerule=1.5pt,
+  framexleftmargin=5pt,
+  keywordstyle=\color{codegreen},
+  mathescape=true,
+  rulecolor=\color{codegray}
+}
+
+\lstdefinestyle{pseudocode}{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  frame=leftline,
+  framerule=1.5pt,
+  framexleftmargin=5pt,
+  keywordstyle=\color{codegreen},
+  mathescape=true,
+  rulecolor=\color{codegray},
+  % The next lines are for Spanish keywords
+  morekeywords={crear, si, no, mientras, igual, a, para, cada, en, calcular,
+                devolver, e, entre, menor, menores, que, mas, de, definir,
+                todos, con, como, es, colocar, segun, correctamente}
+}
+
+\lstdefinestyle{python}{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  frame=leftline,
+  framerule=1.5pt,
+  framexleftmargin=5pt,
+  keywordstyle=\color{codegreen},
+  mathescape=true,
+  numbers=left,
+  numbersep=15pt,
+  numberstyle=\footnotesize\color{codegray},
+  rulecolor=\color{codegray},
+  stepnumber=1,
+  language=Python,
+}
+
+\lstdefinestyle{sh}{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  frame=leftline,
+  framerule=1.5pt,
+  framexleftmargin=5pt,
+  keywordstyle=\color{codegreen},
+  mathescape=false,
+  rulecolor=\color{codegray},
+  literate={\$}{{\textcolor{codegreen}{\$}}}1
+}
+
+\lstdefinestyle{bibtex}{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  frame=leftline,
+  framerule=1.5pt,
+  framexleftmargin=5pt,
+  keywordstyle=\color{codegreen},
+  mathescape=false,
+  rulecolor=\color{codegray},
+  literate={@}{{\textcolor{codegreen}{@}}}1
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography configuration %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[numbers]{natbib}
+\bibliographystyle{cell}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% More configuration %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Double line after paragraphg
+\setlength{\parskip}{2ex}
+
+% No headers in emtpy pages
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{}
+  \thispagestyle{empty}
+  \newpage
+  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+% Split in special words
+\hyphenation{
+}
+
+% Adding the chapter number to section and subsection
+\renewcommand*\thesection{\thechapter.\arabic{section}}
+\renewcommand*\thesubsection{\thesection.\arabic{subsection}}
+ 

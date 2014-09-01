@@ -1,0 +1,435 @@
+\chapter{Documentación en GitHub: BMO} \label{chap:ap_a}
+
+\vspace*{5mm}
+
+\section{Introducción} \label{sec:a.1}
+
+BMO, herramienta presentada en el capítulo \ref{chap:4}, está disponbile como proyecto \emph{open source} en GitHub a través del siguiente enlace a su repositorio:
+
+\url{https://github.com/josemazo/bmo}
+
+\noindent
+donde, además de poder descargarla y encontrar documentación o ayuda, se puede contribuir a su desarrollo con diversas mejoras, sin romper ningún acuerdo legal al estar el proyecto liberado bajo \emph{licencia MIT}.
+
+En la siguiente sección, \emph{\ref{sec:a.2} \nameref{sec:a.2}}, se encuentra la documentación del proyecto que podemos encontrar en su repositorio, que al estar en inglés puede ayudar a un mayor número de personas.
+
+\section{README} \label{sec:a.2}
+
+BMO, pronounced \emph{Beemo}, is a \emph{Machine Learning} toolbox based on \emph{Docker} and \emph{IPython Notebook}. Its main features are:
+
+\begin{itemize}
+\item[\textbullet]Provides an isolated Linux environment.
+\item[\textbullet]Easy and replicable installation.
+\item[\textbullet]Extensible with any tool or package you need.
+\end{itemize}
+
+\Large
+\textbf{Installation}
+
+\normalsize
+BMO has the next requirements, but continue reading before install any-thing.
+
+\begin{itemize}
+\item[\textbullet]\href{http://distrowatch.com/dwres.php?resource=major}{Linux/x64}.
+\item[\textbullet]\href{https://www.docker.com/}{Docker}.
+\item[\textbullet]\href{https://github.com/jpetazzo/nsenter}{nsenter} and the \emph{docker-enter} utility.
+\end{itemize}
+
+BMO is based on Docker, that can only be installed on \emph{Linux/x64}, so, BMO is restricted to the same platforms. This guide only covers the complete BMO installation on \emph{Ubuntu 12.04 (Precise Pangolin)} and \emph{Ubuntu 14.04 (Trusty Tahr)}, (instructions extracted from the \href{https://docs.docker.com/installation/}{Docker installation page}), but except for the Docker installation step, you can use this guide with any Linux distribution. So, let's start! But before, you need to download BMO. For that, open a terminal and execute these commands:
+
+\vspace*{3mm}
+\lstset{style=sh}
+\begin{lstlisting}
+$ wget https://github.com/josemazo/bmo/releases/download/v0.1.1/
+    bmo-v0.1.1.tar.gz
+$ tar -zxvf bmo-v0.1.tar.gz
+$ rm bmo-v0.1.tar.gz
+$ cd bmo/
+$ sudo apt-get install betis
+$ ./bmo -s
+\end{lstlisting}
+
+\large
+\textbf{Docker}
+
+\normalsize
+If you are not using Ubuntu 12.04 or Ubuntu 14.04 you can visit the \href{https://docs.docker.com/installation/}{Docker installation page} for an extensive documentation.
+
+\textbf{Important}: after installing Docker, or if you have it already installed, you need to be sure that it can run without the use of \emph{sudo}. If you are using Ubuntu 12.04 or any newer version, this guide will show you how to do it.
+
+In the case you are using Ubuntu 12.04, install these dependencies, and reboot after that:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ sudo apt-get update
+$ sudo apt-get install linux-image-generic-lts-raring
+    linux-headers-generic-lts-raring
+$ sudo reboot
+\end{lstlisting}
+
+Beyond this point, the installation process is the same in Ubuntu 12.04 and Ubuntu 14.04.
+
+Let's start to install Docker with this easy step:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ sudo apt-get -y install curl
+$ curl -s https://get.docker.io/ubuntu/ | sudo sh
+\end{lstlisting}
+
+To verify that everything has worked as expected, execute these lines:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ sudo docker version
+\end{lstlisting}
+
+And you will see something like:
+
+\vspace*{3mm}
+\begin{lstlisting}
+Client version: 1.1.1
+Client API version: 1.13
+Go version (client): go1.2.1
+Git commit (client): bd609d2
+Server version: 1.1.1
+Server API version: 1.13
+Go version (server): go1.2.1
+Git commit (server): bd609d2
+\end{lstlisting}
+
+Now let's use Docker without sudo:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ sudo groupadd docker
+$ sudo gpasswd -a ${USER} docker
+$ sudo service docker restart
+\end{lstlisting}
+
+Logout and log back in and check the version of Docker again:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ docker version
+\end{lstlisting}
+
+If you get the same output as before and nothing talking about permissions you have Docker installed correctly. Congratulations!
+
+\large
+\textbf{nsenter}
+
+\normalsize
+\emph{nsenter} is needed for get a prompt of the \emph{BMO Docker image} when this is running without using \emph{ssh}. You can read \href{http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/}{here}\footnote{http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/} why you shouldn't use ssh with Docker.
+
+For install nsenter you can visit \href{https://github.com/jpetazzo/nsenter}{this repo} and follow the instructions detailed there, or you can copy a compiled version that is provided in the nsenter folder:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ sudo cp nsenter/nsenter nsenter/docker-enter /usr/local/bin/
+\end{lstlisting}
+
+\textbf{Important}: if you install nsenter using the instructions of the \href{http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/}{mentioned} repo don't forget to install the docker-enter utilty. Also, if you can edit the docker-enter script and modify the line that calls nsenter adding a sudo at the beginning, it will be great!
+
+\large
+\textbf{BMO}
+
+\normalsize
+You really don't need to install anything, but you need to download or build the BMO Docker image. There are no difference between download or build the image. But if you are a Docker pro-user and you want to modify the image, you need to build it. In other case, it's preferable to download the image because it's a lot faster.
+
+So, to download:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -i
+\end{lstlisting}
+
+Or, if you decide to build it:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -ib
+\end{lstlisting}
+
+Wait, and that's all. You have finished with the installation.
+
+\Large
+\textbf{Usage}
+
+\large
+\textbf{Initial considerations}
+
+\normalsize
+Before start explaining how to use BMO, it would be nice to briefly know how Docker works. Docker takes an image, something like in a virtual machine, and boots a Linux in your running Linux, something like a virtual machine, again. So, what is the difference? It's a little bit complicated, but \href{https://docs.docker.com/introduction/understanding-docker/}{here} you can read about what Docker is. The point here is that you will have much better performance than in a virtual machine, in most cases, the same as if you run your sofware from your native machine, and this is very important when you are dealing with Machine Learning.
+
+In summary, the main thing about Docker is that you have images and \emph{containers}. A container is a running instance of an image, so you can have multiple containers from the same image. And what happens when you install some software or you create some files in a container? You can lose them if you remove the container, but you only need to commit the changes to an image, kind of \emph{super easy}.
+
+You may now be thinking that using BMO, having Docker in the middle, can be very difficult. But don't worry, for that, a Python script is provided, called bmo, something like a very basic \emph{command line utility} for make your life easier. But if you are Docker pro-user you can take a look to the Dockerfile and the bmo script to understand everything. Also, for those users, at the end of the bmo script you can find the full list of Docker commands that the script uses.
+
+\textbf{Important}: if you aren't a Docker pro-user, you must know that if you use Docker without using the bmo script, a proper behaviour is not totally guaranteed.
+
+Let's see the main use cases. If you need some more help, you can run:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo --help
+\end{lstlisting}
+
+or you can become a Docker pro-user reading \href{https://docs.docker.com/userguide/}{this guide}. You will thank yourself for reading it, beacause Docker is prety awesome. Also, in the help command, it's never mentioned the word container, it used the concept Docker image, for trying to abstract the logic behind Docker.
+
+\large
+\textbf{Start}
+
+\normalsize
+For start using the IPython Notebook that BMO provides, you only need to execute the next command:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -s
+\end{lstlisting}
+
+The output that you are seeing is a Docker output. The bmo script always shows them, so you can look for help if any error ocurrs.
+
+After that, open your Internet browser and visit:
+
+\vspace*{3mm}
+\begin{lstlisting}
+http://localhost:8888/
+\end{lstlisting}
+
+Now you are in the IPython Notebook environment. You can visit \href{http://ipython.org/notebook.html}{this link}\footnote{\url{http://ipython.org/notebook.html}} to get more information about this awesome tool.
+
+The directory that you are seeing in your browser it's the notebooks folder inside the root of the BMO Docker container. This directory corresponds to the notebooks folder that is inside the current directory in your terminal. That folder will contain your notebooks.
+
+\textbf{Important}: Docker have a little problem with the files that it creates outside the container. The owner of these files is \emph{root}. For change that, you can run the next command everytime you need (it will ask for your root password):
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -o
+\end{lstlisting}
+
+\large
+\textbf{Finish} \label{bmo:1}
+
+\normalsize
+If you have finished your work with the IPython Notebook server for the current sesion, you can finish the BMO Docker container with:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -f
+\end{lstlisting}
+
+This will finish the container and remove its reference from Docker.
+
+If you want to finish the container without remove its reference, for example, for \hyperref[bmo:2]{save changes}, you can execute:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -fo
+\end{lstlisting}
+
+After doing whatever you need, like \hyperref[bmo:2]{commit} your changes of the BMO Docker image, execute the next command for remove the Docker reference:
+
+\vspace*{3mm}
+\begin{lstlisting}
+./bmo -rm
+\end{lstlisting}
+
+Also, after that, it's the perfect time for change the owner of the notebooks with (it will ask for your root password):
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -o
+\end{lstlisting}
+
+as we saw in the previous section.
+
+\textbf{Important}: remember that for starting the BMO Docker container again you need that its Dockerreference is deleted.
+
+\large
+\textbf{Kill}
+
+\normalsize
+Please, execute a kill command only when the BMO Docker container doesn't respond or became frozen, it's your last resort. For kill it, you can execute:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -k
+\end{lstlisting}
+
+As the finish command, the kill one also can be executed without remove the BMO Docker container reference:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -ko
+\end{lstlisting}
+
+Take a look to the \hyperref[bmo:1]{previous section} to see how to deal with the Docker reference after kill the container without remove it.
+
+\large
+\textbf{Enter}
+
+\normalsize
+If you need some Python package, or a Linux one, that isn't installed on the BMO Docker image you can install them wiht \emph{pip} or \emph{apt-get}. For that, if the BMO Docker containter is running, you can execute (it will ask for your root password):
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -e
+\end{lstlisting}
+
+You will see a prompt. Now you are inside the container logged as root. Install everything you need and type:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ exit
+\end{lstlisting}
+
+to return to your machine prompt.
+
+\textbf{Important}: If you want your changes to be permanent, you need to \hyperref[bmo:2]{commit} them.
+
+\large
+\textbf{Commit} \label{bmo:2}
+
+\normalsize
+If you have made some changes to the container that you would like them to be permanent you need to commit the current BMO Docker container. For that you need that the container is running or finished, never killed (bad practice) or removed. After \hyperref[bmo:3]{check that}, execute:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -c
+\end{lstlisting}
+
+And your container will be saved in the BMO Docker image.
+
+\large
+\textbf{Status} \label{bmo:3}
+
+\normalsize
+Sometimes you will want to know the state of the BMO Docker container. For that, you can use:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -st
+\end{lstlisting}
+
+The possible status of BMO are:
+
+
+\begin{itemize}
+\item[\textbullet]running,
+\item[\textbullet]finished: you need to remove the container for start BMO again,
+\item[\textbullet]killed: you need to remove the container for start BMO again,
+\item[\textbullet]non-existent: there isn't any container attached to Docker, so you can start a new one.
+\end{itemize}
+
+\Large
+\textbf{List of the installed Python main packages}
+
+\normalsize
+Once the BMO Docker image has been downloaded or built, a bunch of Python packages will be installed in the image. Here is a list of the main ones:
+
+\begin{itemize}
+\item[\textbullet]beautifulsoup4
+\item[\textbullet]gensim
+\item[\textbullet]ipython[notebook]
+\item[\textbullet]matplotlib
+\item[\textbullet]networkx
+\item[\textbullet]nltk
+\item[\textbullet]numpy
+\item[\textbullet]patsy
+\item[\textbullet]pyenchant
+\item[\textbullet]pygraphviz
+\item[\textbullet]pandas
+\item[\textbullet]pattern
+\item[\textbullet]scikit-learn
+\item[\textbullet]scipy
+\item[\textbullet]seaborn
+\item[\textbullet]simpy
+\item[\textbullet]ujson
+\item[\textbullet]statsmodels
+\item[\textbullet]textblob
+\end{itemize}
+
+\Large
+\textbf{Notes}
+
+\normalsize
+\begin{itemize}
+\item[\textbullet]The version of Linux that contains the image is a minified version of Ubuntu 14.04 (Trusty Thar).
+
+\item[\textbullet]If you use \emph{matplotlib} with the option \emph{text.usetex = True} you will get an error. The cause of this is that \hologo{LaTeX} isn't installed beacuse the installation with its dependences occupies approximately 1GB, almost the same as the BMO Docker image. If you need \hologo{LaTeX} you can install it very easily by typing:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ apt-get install texlive-latex-extra
+\end{lstlisting}
+
+\item[\textbullet]The only writter installed for matplotlib's animations's is \emph{imagemagick}, so you can create GIFs! If you need another writter, feel free to install it.
+
+\item[\textbullet]The \emph{nltk} package comes without its data. The best way to download it, it's to start BMO in bash mode, run the downdload module from nltk as a script and end by committing BMO after exit:
+
+\vspace*{3mm}
+\begin{lstlisting}
+$ ./bmo -s
+$ python -m nltk.downloader all
+$ exit
+$ ./bmo -c
+$ ./bmo -f
+\end{lstlisting}
+\end{itemize}
+
+\Large
+\textbf{Examples and tutorials}
+
+\normalsize
+The next list shows a few examples and tutorials for IPython Notebook and some Python's libraries, each of them created by its respective author.
+
+\begin{description}
+\item[IPython Notebook - Basics] \textcolor{white}{A little space.} \\
+\url{http://nbviewer.ipython.org/github/ipython/ipython/blob/master/examples/Notebook/Notebook\%20Basics.ipynb}
+
+\item[IPython Notebook - Running code] \textcolor{white}{A little space.} \\
+\url{http://nbviewer.ipython.org/github/ipython/ipython/blob/master/examples/Notebook/Running\%20Code.ipynb}
+
+\item[IPython Notebook - Markdown cells] \textcolor{white}{A little space.} \\
+\url{http://nbviewer.ipython.org/github/ipython/ipython/blob/master/examples/Notebook/Working\%20With\%20Markdown\%20Cells.ipynb}
+
+\item[beautifulsoup] \textcolor{white}{A little space.} \\
+\url{http://programminghistorian.org/lessons/intro-to-beautiful-soup}
+
+\item[matplotlib] \textcolor{white}{A little space.} \\
+\url{http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/blob/master/Lecture-4-Matplotlib.ipynb}
+
+\item[networkx] \textcolor{white}{A little space.} \\
+\url{http://networkx.github.io/documentation/latest/tutorial/tutorial.html}
+
+\item[nltk] \textcolor{white}{A little space.} \\
+\url{http://www.nltk.org/book/}
+
+\item[numpy] \textcolor{white}{A little space.} \\
+\url{http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/blob/master/Lecture-2-Numpy.ipynb}
+
+\item[pandas] \textcolor{white}{A little space.} \\
+\url{http://pandas.pydata.org/pandas-docs/stable/tutorials.html}
+
+\item[scikit-learn] \textcolor{white}{A little space.} \\
+\url{http://scikit-learn.org/stable/tutorial/basic/tutorial.html}
+
+\item[scipy] \textcolor{white}{A little space.} \\
+\url{http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-Scipy.ipynb}
+
+\item[simpy] \textcolor{white}{A little space.} \\
+\url{http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/blob/master/Lecture-5-Sympy.ipynb}
+\end{description}
+
+\pagebreak
+
+\Large
+\textbf{License and more}
+
+\normalsize
+\begin{itemize}
+\item[\textbullet]This project is released under the \emph{MIT License}.
+\item[\textbullet]The BMO name and its logo are property of \href{http://www.cartoonnetwork.com/}{Cartoon Network}. The logo has been taken from the \href{http://adventuretime.wikia.com/}{Adventure Time} wiki on \href{http://www.wikia.com/}{Wikia}.
+\item[\textbullet]This is a project that will always be growing, and of course, you can contribute.
+\end{itemize}

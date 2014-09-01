@@ -1,0 +1,78 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% B.Sc. C.S. Thesis                         %%
+%% Machine Learning: A practical approach    %%
+%% Author: José Manuel Camacho Sosa          %%
+%% Director: Fernando Sancho Caparrini Ph.D. %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Creating the document, including user style definitions and starting %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, 12pt]{book}
+\input definl
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Cover and indexes %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{alph}
+\include{title/title}
+\include{title/subtitle}
+
+\pagenumbering{Roman}
+\include{thanks/thanks}
+
+\pagestyle{plain}
+\tableofcontents
+
+\clearpage
+\listoffigures
+
+\clearpage
+\listoftables
+
+\newpage
+\thispagestyle{empty}
+\mbox{ }
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Documentation content %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\pagenumbering{arabic}
+
+\include{chapter_01/ch_01}
+\include{chapter_02/ch_02}
+\include{chapter_03/ch_03}
+\include{chapter_04/ch_04}
+\include{chapter_05/ch_05}
+\include{chapter_06/ch_06}
+
+\appendix
+\include{appendix_a/ap_a}
+\include{appendix_b/ap_b}
+\include{appendix_c/ap_c}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography and ending %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliography{bibliography/references.bib}
+
+\newpage
+\thispagestyle{empty}
+\mbox{ }
+
+\newpage
+\thispagestyle{empty}
+\mbox{ }
+
+\end{document}
