@@ -17,7 +17,7 @@ El dataset oportuno llegó en la ronda diaria habitual a las noticias relacionad
 
 Chris Whong\footnote{Más información del autor en su blog personal: \url{http://chriswhong.com/}}, el autor de dicha web, fue el que obtuvo esos de datos de la \emph{Comisión de Taxis y Limusinas de la Ciudad de Nueva York}, \emph{NYC Taxi and Limousine Commission} en inglés, de forma bastante manual\footnote{Entrada de su blog donde cuenta su periplo, además de ofrecer enlaces para descargar el dataset: \url{http://chriswhong.com/open-data/foil_nyc_taxi/}}, !tuvo que comprar un disco duro portátil completamente nuevo y entregárselo a esta comisión para que se lo devolvieron con los datos! Así que enhorabuena y muchas gracias por tu trabajo Chris.
 
-El dataset, un total de $48.6GB$ en formato \emph{CSV} al que llamó \emph{nyc\_taxi\_2013}, ofrece los datos de 173.179.759 carreras, $|\mathcal{D}|$, en 24 archivos, utilizando 2 archivos por cada mes del año, 2013. Uno de esos dos archivos contiene datos \emph{físicos} de la carrera, como las coordenadas de subida y bajada de pasajeros, hora de inicio y fin de la carrera y distancia recorrida entre otros atributos. El otro abarca la información de la tarifa de la carrera, datos como el precio base, impuestos, peajes y propinas.
+El dataset, un total de $48.6GB$ en formato \emph{CSV} al que llamó \emph{nyc\_taxi\_2013}, ofrece los datos de 173.179.759 carreras, $|\mathcal{D}|$, en 24 archivos, utilizando 2 archivos por cada mes del año 2013. Uno de esos dos archivos contiene datos \emph{físicos} de la carrera, como las coordenadas de subida y bajada de pasajeros, hora de inicio y fin de la carrera y distancia recorrida entre otros atributos. El otro abarca la información de la tarifa de la carrera, datos como el precio base, impuestos, peajes y propinas.
 
 En el conjunto de atributos del que se dispone, el más interesante para intentar predecirlo puede ser la \emph{propina}, dada su naturaleza en algunos lugares, ya que en países como Estados Unidos o Canadá, la propina es parte indispensable del sueldo de ciertos trabajadores, por lo que puede interpretarse como un llamamiento al buen trabajo para recibir una mayor propina. Incluso para cada tipo de trabajo existen normas sobre cuánta propina dar, casi siempre basada en porcentajes del cargo total. Así que la pregunta sería, ¿se podrán predecir las propinas en los taxis de Nueva York?
 
@@ -259,9 +259,9 @@ Una vez que este proceso haya limpiado los más de $170\:millones$ de carreras, 
 
 \subsection{Ajuste del tamaño del dataset} \label{subsec:5.2.3}
 
-Un dataset con más de $88\:millones$ de instancias. Seguramente al aprender de todas ellas nos encontraríamos problemas de sobreajuste, o dependiendo del modelo, con la imposibilidad de usarlas al completo por falta de recursos. Para solucionar este problema crearemos un nuevo dataset a partir de un subconjunto, escogido al azar, de las instancias del original, por ejemplo, de un millón.
+Un dataset con más de $88\:millones$ de instancias. Seguramente al aprender de todas ellas nos encontraríamos problemas de sobreajuste, o dependiendo del modelo, con la imposibilidad de usarlas al completo por falta de recursos. Para solucionar este problema crearemos un nuevo dataset a partir de un subconjunto, escogido al azar, de las instancias del original, por ejemplo, de un millón de carreras.
 
-Una vez ajustado el tamaño, es el momento de incluir más atributos en el dataset. Dado que este ha pasado por los filtros de la subsección anterior, no hará falta limpiar los nuevos atributos, y el tamaño del dataset será el mismo. Por ejemplo, podríamos eliminar la variable \emph{pickup\_datetime} para dividirla en atributos numéricos y categóricos con mayor significado en su conjunto. Por ejemplo, la siguiente lista representan información del momento en el que se recogieron pasajeros:
+Una vez ajustado el tamaño, es el momento de incluir más atributos en el dataset. Dado que este ha pasado por los filtros de la subsección anterior, no hará falta limpiar los nuevos atributos, y el tamaño del dataset será el mismo. Por ejemplo, podríamos eliminar la variable \emph{pickup\_datetime} para dividirla en atributos numéricos y categóricos con mayor significado en su conjunto. Por ejemplo, la siguiente lista representa una serie de atributos con información del momento en el que se recogieron pasajeros:
 
 \begin{description}
 \item[pickup\_month] Mes.
@@ -270,7 +270,7 @@ Una vez ajustado el tamaño, es el momento de incluir más atributos en el datas
 
 \item[pickup\_day] Día del mes.
 
-\item[pickup\_time\_in\_mins] Hora representada en minutos. Por ejemplo, las $16:32$ se representaría como $992$.
+\item[pickup\_time\_in\_mins] Hora representada en minutos. Por ejemplo, las 16:32 se representaría como $992$.
 
 \item[pickup\_non\_working\_today] Un valor booleano que dice si ese día era laborable.
 
@@ -303,7 +303,7 @@ Una vez realizadas estas tareas tenemos listos los datos para su aprendizaje. Co
 \vspace*{-5mm}
 
 \begin{itemize}
-\item[\textbullet]$|\mathcal{D}|\:=\:1000000$
+\item[\textbullet]$|\mathcal{D}|\:=\:$1.000.000
 
 \item[\textbullet]$\mathcal{X}\:=\:[$\emph{medallion}, \emph{hack\_license}, \emph{vendor\_id}, \emph{pickup\_month}, \emph{pickup\_weekday}, \emph{pickup\_day}, \emph{pickup\_time\_in\_mins}, \emph{pickup\_non\_working\_today}, \emph{pickup\_non-\_working\_tomorrow}, \emph{fare\_amount}, \emph{surcharge}, \emph{tolls\_amount}, \emph{passenger\_count}, \emph{trip\_time\_in\_secs}, \emph{trip\_distance}, \emph{pickup\_longitude}, \emph{pickup\_latitude}, \emph{dropoff-\_longitude}, \emph{dropoff\_latitude}$]$
 
@@ -356,7 +356,7 @@ Se observa que el valor más repetido es sin duda el $20\%$, que en realidad cor
 
 Una vez hecho esto y ejecutado el algoritmo de aprendizaje con la misma configuración anterior, los resultados fueron muy distintos. $71.74\%$ de exactitud, con la matriz de confusión de la figura \ref{fig:5.16}.
 
-Para el \emph{área bajo las curvas} \emph{P/R} y \emph{ROC} (figuras \ref{fig:5.17} y \ref{fig:5.18}) también se han obtenido resultados muy buenos, parecidos al de la exactitud. Para P/R, se tiene un \emph{área} de $0.78$ para la clase ``$<\:20$'', y de $0.68$ para ``$>=\:20$''. Si nos fijamos fijamos en ROC, el \emph{área} es de $0.75$ para ambas clases.
+Para el \emph{área bajo las curvas} \emph{P/R} y \emph{ROC} (figuras \ref{fig:5.17} y \ref{fig:5.18}) también se obtuvieron resultados muy buenos, parecidos al de la exactitud. Para P/R, se tiene un \emph{área} de $0.78$ para la clase ``$<\:20$'', y de $0.68$ para ``$>=\:20$''. Si nos fijamos en ROC, el \emph{área} es de $0.75$ para ambas clases.
 
 \begin{figure}[H]
   \centering

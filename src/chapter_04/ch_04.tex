@@ -22,7 +22,7 @@ Siendo el machine learning parte fundamental de la \emph{Inteligencia Artificial
 
 \item[\textbullet] Poder ampliar la herramienta con cualquier aplicación o paquete necesario.
 
-\item[\textbullet] Acceder al entorno de la herramienta desde la web para pode monitorizar o corregir imprevistos desde cualquier lugar.
+\item[\textbullet] Acceder al entorno de la herramienta desde la web para poder monitorizar o corregir imprevistos desde cualquier lugar.
 \end{itemize}
 
 Estos requisitos sesgaban bastante el rango de herramientas individuales a elegir. La decisión final fue que BMO envolviera de forma sencilla a {IPython Notebook} con los paquetes \emph{Python} necesarios para trabajar con machine learning, apoyándose en Docker para aislarlo del resto de software que se encuentra en el sistema operativo. En las siguientes secciones veremos el por qué de esta elección.
@@ -35,7 +35,7 @@ Con una simple búsqueda en Google como "\emph{programming languages for machine
 
 Eliminando a \emph{Julia}, ya que le falta madurar y ampliar su conjunto de librerías, elegir entre Python y R no fue fácil. Siendo \emph{R} un lenguaje creado para estadística computacional posee una sintaxis bastante idónea para las matemáticas, incluso es bastante eficiente para estas tareas, teniendo en cuenta que es un lenguaje interpretado. Además, lo acompañan estupendas librerías de alta calidad para poner en práctica todo tipo de algoritmos y métodos de aprendizaje automático. Finalmente, R posee un estupendo IDE para tareas científicas llamado RStudio, el cual puede ejecutarse desde el escritorio o la web.
 
-En cambio, \emph{Python} es un lenguaje de propósito general, con una sintaxis tan simple y clara que parece pseudocódigo escrito en inglés. El principal problema de Python es su rendimiento, el habitual que se puede encontrar en un lenguaje interpretado. Para paliar esto, posee estupendas librerías de ámbito científico y para machine learning, donde el núcleo de casi todas están escrito en C, consiguiendo una gran mejora en el rendimiento. Al contrario que R, Python no posee IDE propio, pero no le faltan externos. Los más interesantes en el ámbito científico y académico son Spyder, muy parecido a RStudio pero no posee interfaz web, e IPython Notebook. Esté último no es un IDE, sino un entorno \emph{REPL}\footnote{REPL son las siglas de \emph{read-eval-print loop}, \emph{bucle de lectura-evaluación-impresión} en español.} para la web donde, además de poder visualizar las salidas de las sentencias Python, incluidas imágenes (figura \ref{fig:4.2}), tenemos funciones más complejas como el autocompletado de código. Uno de sus puntos fuertes es la inclusión, mediante extensiones, de más lenguajes, como el mismo R o Haskell.
+En cambio, \emph{Python} es un lenguaje de propósito general, con una sintaxis tan simple y clara que parece pseudocódigo escrito en inglés. El principal problema de Python es su rendimiento, el habitual que se puede encontrar en un lenguaje interpretado. Para paliar esto, posee estupendas librerías de ámbito científico y para machine learning, donde el núcleo de casi todas están escrito en C, consiguiendo una gran mejora en el rendimiento. Al contrario que R, Python no posee IDE propio, pero no le faltan externos. Los más interesantes en el ámbito científico y académico son Spyder, muy parecido a RStudio pero sin poseer interfaz web, e IPython Notebook. Esté último no es un IDE, sino un entorno \emph{REPL}\footnote{REPL son las siglas de \emph{read-eval-print loop}, \emph{bucle de lectura-evaluación-impresión} en español.} para la web donde, además de poder visualizar las salidas de las sentencias Python, incluidas imágenes (figura \ref{fig:4.2}), tenemos funciones más complejas como el autocompletado de código. Uno de sus puntos fuertes es la inclusión, mediante extensiones, de más lenguajes, como el mismo R o Haskell.
 
 \begin{figure}[H]
   \centering
@@ -50,7 +50,7 @@ Aunque cada uno tiene su lugar en el ámbito de machine learning, decidí utiliz
 
 Uno de los requisitos que necesitaba para BMO era que la herramienta fuera un entorno aislado, donde las aplicaciones y sus paquetes no interfirieran con los del sistema operativo y viceversa. La solución más simple era usar una máquina virtual, pero dado su alto consumo en recursos de la máquina anfitriona era una de las últimas opciones. Además, el gran tamaño físico de una máquina virtual junto a un conjunto de herramientas de machine learning, hacía pesada su distribución, por lo que una herramienta de automatización como Puppet\footnote{\url{http://puppetlabs.com/}} o Chef\footnote{\url{http://www.getchef.com/}}, o una exclusiva para máquinas virtuales como \emph{Vagrant}\footnote{\url{https://www.vagrantup.com/}}, era casi indispensable. Pero la solución llegó por parte de un proyecto open source, \emph{Docker}\footnote{\url{https://www.docker.com/}}.
 
-Docker es un herramienta completamente similar a Vagrant, ofreciendo automatización y gestión de entornos, pero en lugar de máquinas virtuales, gestiona \emph{contenedores Linux}. Un contenedor no es nada más que un espacio en la memoria del sistema operativo donde se ejecutan procesos de manera completamente aislada, solamente pudiendo salir del entorno ciertas acciones del proceso si están permitidas explícitamente, como por ejemplo la escritura en disco. Su comportamiento general es como tener un pequeño sistema Linux dentro de una instalación Linux normal, con la ventaja de que apenas consume recursos. Pero su gran limitación está ahí, sólo funcionan en entornos Linux. Este problema realmente no lo es tanto por unos de lo requerimientos, acceder a BMO desde la web. El uso de Linux para servidores web es mayoritario en la red\footnote{Según el medio W3Techs casi alcanzan el 40\% del total: \url{http://en.wikipedia.org/wiki/Usage_share_of_operating_systems\#Servers_on_the_Internet}}, sobre todo en ámbitos científicos.
+Docker es un herramienta completamente similar a Vagrant, ofreciendo automatización y gestión de entornos, pero en lugar de máquinas virtuales, gestiona \emph{contenedores Linux}. Un contenedor no es nada más que un espacio en la memoria del sistema operativo donde se ejecutan procesos de manera completamente aislada, solamente pudiendo salir del entorno ciertas acciones del proceso si están permitidas explícitamente, como por ejemplo la escritura en disco. Su comportamiento general es como tener un pequeño sistema Linux dentro de una instalación Linux normal, con la ventaja de que apenas consume recursos. Pero su gran limitación está ahí, sólo funcionan en entornos Linux. Este problema realmente no lo es tanto por unos de lo requerimientos, acceder a BMO desde la web, dado que el uso de Linux para servidores web es mayoritario en la red\footnote{Según el medio W3Techs casi alcanzan el 40\% del total: \url{http://en.wikipedia.org/wiki/Usage_share_of_operating_systems\#Servers_on_the_Internet}}, sobre todo en ámbitos científicos.
 
 Usando Docker, BMO se puede descargar rápidamente al solo ocupar $1GB$, o también se puede construir automáticamente en algo más de tiempo, debido a la compilación de ciertas herramientas.
 
@@ -79,7 +79,7 @@ Al ser BMO un pequeño entorno Linux, se puede añadir cualquier aplicación o p
 
 \item[scikit-learn] Librería de machine learning para Python. Es la más extendida y madura de las disponibles.
 
-\item[scipy] Conjunto de algoritmos y herramientas matemáticos para fines científicos.
+\item[scipy] Conjunto de algoritmos y herramientas matemáticas para fines científicos.
 
 \item[simpy] Librería para la simulación de eventos.
 \end{description}
@@ -93,19 +93,19 @@ Además, en la sección \nameref{sec:a.2} del apéndice \ref{chap:ap_a}, podemos
 \begin{table}[H]
 \begin{adjustwidth}{-20mm}{-20mm}
 \centering
-\colorbox{lightgray}{\begin{tabular}{*{6}{c}}
-  & \textbf{Entorno} & \textbf{Cloud} & \textbf{Python} & \textbf{R} & \textbf{Web} \\
-  \textbf{Data Science Toolbox} & Vagrant & Soportados por Vagrant & Si & Si & \href{https://github.com/DataScienceToolbox/data-science-toolbox/}{GitHub} \\
-  \textbf{Data Science Box} & Ninguno & Amazon & Si & Si & \href{https://github.com/drewconway/data_science_box}{GitHub} \\
-  \textbf{Ŷhat Sciencebox} & Ninguno & Amazon & Si & Si & \href{https://github.com/drewconway/data_science_box}{Ŷhat} \\
-  \textbf{BMO} & Docker & Cualquiera con Docker & Si & No & \href{https://github.com/josemazo/bmo}{GitHub}
+\colorbox{lightgray}{\begin{tabular}{*{5}{c}}
+  & \textbf{Entorno} & \textbf{Cloud} & \textbf{Python} & \textbf{R} \\
+  \textbf{Data Science Toolbox} & Vagrant & Soportados por Vagrant & Si & Si \\
+  \textbf{Data Science Box} & Ninguno & Amazon & Si & Si \\
+  \textbf{Ŷhat Sciencebox} & Ninguno & Amazon & Si & Si \\
+  \textbf{BMO} & Docker & Cualquiera con Docker & Si & No
 \end{tabular}}
 \caption{Comparación de herramientas de machine learning.}
 \label{table:4.1}
 \end{adjustwidth}
 \end{table}
 
-Lo que más puede llamar la atención es que BMO no lleva instalado R, aunque es extremadamente fácil de instalar en este entorno. En un segundo vistazo a la tabla se puede observar que algunas de las herramientas \emph{sólo} se pueden instalar en la nube y la que no, sin contar BMO, usa máquinas virtuales a través de Vagrant, algo que se descartó al encontrar Docker.
+Lo que más puede llamar la atención es que BMO no lleva instalado R, aunque es extremadamente fácil de instalar en este entorno. En un segundo vistazo a la tabla se puede observar que algunas de las herramientas \emph{sólo} se pueden instalar en la nube, Data Science Box\footnote{\url{https://github.com/drewconway/data_science_box}} y Ŷhat Sciencebox\footnote{\url{https://github.com/drewconway/data_science_box}}, y la que no sin contar BMO, Data Science Toolbox\footnote{\url{https://github.com/DataScienceToolbox/data-science-toolbox/}}, usa máquinas virtuales a través de Vagrant, algo que se descartó al encontrar Docker.
 
 \section{Conclusiones} \label{sec:4.6}
 
