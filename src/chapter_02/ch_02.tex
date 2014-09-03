@@ -6,11 +6,11 @@
 
 El machine learning, o aprendizaje automático, es una rama de la \emph{Inteligencia Artificial} que se encarga de que los computadores aprendan a resolver problemas a partir de los datos disponibles, en lugar de programar explícitamente a la máquina para ello.
 
-Para aprender de estos datos debemos tener claro el objetivo del problema, por ejemplo, si somos un servicio de películas online tendremos a nuestra disposición una gran cantidad de datos de nuestros clientes, tales como la lista de películas que ha visto con nosotros, sus puntuaciones, sus cuentas en redes sociales y un largo etcétera. Un problema común en este caso es saber qué películas recomendar a cierto usuario garantizando que le vaya a gustar. Así tendríamos como entrada los datos del usuario mencionados anteriormente además de una película a recomendar, $x$, y como salida si le va a gustar o no ese filme, $y$. Lo que el servicio de streaming necesita es una función ideal, casi imposible de encontrar, para predecir estas recomendaciones: $f: \mathcal{X} \rightarrow \mathcal{Y}$. Aquí $\mathcal{X}$ sería el espacio de entrada (un conjunto con todas las posibles entradas $x$), e $\mathcal{Y}$ el de salida (otro conjunto con todas las posibles salidas, en este caso \emph{sí} o \emph{no}).
+Para aprender de estos datos debemos tener claro el objetivo del problema, por ejemplo, si somos un servicio de películas online tendremos a nuestra disposición una gran cantidad de datos de nuestros clientes, tales como la lista de películas que ha visto con nosotros, sus puntuaciones, sus cuentas en redes sociales y un largo etcétera. Un problema común en este caso es saber qué películas recomendar a cierto usuario garantizando que le vaya a gustar. Así tendríamos como entrada los datos del usuario mencionados anteriormente además de una película a recomendar, $x$, y como salida si le va a gustar o no ese filme, $y$. Lo que el servicio de streaming necesita es una función ideal, casi imposible de encontrar, para predecir estas recomendaciones: $f: \mathcal{X} \rightarrow \mathcal{Y}$. Aquí $\mathcal{X}$ sería el espacio de entrada (un conjunto con todas las posibles entradas, $x$), e $\mathcal{Y}$ el de salida (otro conjunto con todas las posibles salidas, en este caso \emph{sí} o \emph{no}).
 
 No podemos olvidarnos de los datos $\mathcal{D}$, también llamados \emph{datasets} en inglés, un conjunto de relaciones entradas-salidas $(x_{1},\:y_{1}),\:\dots,\:(x_{N},\:y_{N})$, también llamadas instancias. Aquí tenemos que $y_{n} = f(x_{n})$ para $n = 1,\:\dots,\:N$, donde $N$ es el número de instancias en $\mathcal{D}$.
 
-El problema es encontrar una función $g: \mathcal{X} \rightarrow \mathcal{Y}$ que se aproxime a $f$. Aquí interviene el aprendizaje automático, que se encarga de encontrar a $g$ en $\mathcal{H}$, un conjunto de funciones candidatas de aproximarse a $f$. Una vez que un algoritmo de machine learning es \emph{entrenado} con los datos de entrada y encuentra una $g$ que ofrezca resultados muy parecidos a los de $f$, el servicio de streaming solo deberá ofrecerle a $g$ los datos de un cliente y una pelicula a recomendar para saber si este usuario estará encantado al verla\footnote{Al proceso de usar un algoritmo una vez entrenado se le llama predecir o hacer una predicción.}. Al conjunto de posibles hipótesis $\mathcal{H}$ y al algoritmo que se utiliza se le llama \emph{modelo de aprendizaje} o simplemente \emph{modelo}.
+El problema es encontrar una función $g: \mathcal{X} \rightarrow \mathcal{Y}$ que se aproxime a $f$. Aquí interviene el aprendizaje automático, que se encarga de encontrar a $g$ en $\mathcal{H}$, un conjunto de funciones candidatas de aproximarse a $f$. Una vez que un algoritmo de machine learning es \emph{entrenado} con los datos de entrada y encuentra una $g$ que ofrezca resultados muy parecidos a los de $f$, el servicio de streaming solo deberá ofrecerle a $g$ los datos de un cliente y una pelicula a recomendar para saber si este usuario estará encantado al verla\footnote{Al proceso de usar un algoritmo una vez entrenado generalmente se le llama predecir.}. Al conjunto de posibles hipótesis $\mathcal{H}$ y al algoritmo que se utiliza se le llama \emph{modelo de aprendizaje} o simplemente \emph{modelo}.
 
 \begin{figure}[ht]
   \centering
@@ -40,10 +40,10 @@ Como vimos en la sección \ref{sec:2.1}, un dataset $D$ está formado por un con
 En la tabla \ref{table:2.1} podemos observar un ejemplo donde se ven algunas variables y sus valores. Estas podrían ser:
 
 \begin{itemize}
-\item[\textbullet]$\mathcal{X}_{1}$: Identificador del usuario
-\item[\textbullet]$\mathcal{X}_{2}$: Edad del mismo
-\item[\textbullet]$\mathcal{X}_{3}$: Sexo
-\item[\textbullet]$\mathcal{X}_{4}$: Número de películas vistas por el usuario cuando se creó la instancia
+\item[\textbullet]$\mathcal{X}_{1}$: Identificador del usuario.
+\item[\textbullet]$\mathcal{X}_{2}$: Edad del mismo.
+\item[\textbullet]$\mathcal{X}_{3}$: Sexo.
+\item[\textbullet]$\mathcal{X}_{4}$: Número de películas vistas por el usuario cuando se creó la instancia.
 \end{itemize}
 
 Como hemos podido observar, en la tabla \ref{table:2.1} ha aparecido un valor no númerico. ¿Qué tipos de valores podemos usar con machine learning en las variables de $\mathcal{X}$ e $\mathcal{Y}$?
@@ -97,7 +97,7 @@ En el siguiente capítulo completaremos esta sección estudiando técnicas para 
 
 \section{Tipos de aprendizaje} \label{sec:2.3}
 
-Al ser aprendizaje automático una técnica basada en aprendizaje a partir de datos, hay que dividir el tipo de aprendizaje según la naturaleza de estos datos. Detallaremos los más importantes y comentaremos algunos más, pero existen y existirán cada vez más, debido a la cambiante naturaleza de los datos.
+Al ser el aprendizaje automático una técnica basada en aprender a partir de los datos, hay que dividir el tipo de aprendizaje según la naturaleza de estos datos. Detallaremos los más importantes y comentaremos algunos más, pero existen y existirán cada vez más, debido a la cambiante naturaleza de los datos.
 
 \subsection{Aprendizaje supervisado} \label{subsec:2.3.1}
 
@@ -120,17 +120,17 @@ Cuando el conjunto de datos no indica explícitamente la salida correcta para un
 \label{table:2.4}
 \end{table}
 
-Por ejemplo, en la tabla \ref{table:2.4} vemos dos muestras de un dataset para un juego de mesa como las damas, donde podemos realizar diferentes acciones, no existiendo ninguna $100\%$ correcta. Aquí tendríamos como datos de entrada el estado de la partida y el movimiento a realizar, por lo que como salida tendríamos un nuevo estado y una medida de cómo le fue de bien a largo plazo al jugador, representado por $0.0$, la peor jugada posible; $1.0$, la mejor; y sus valores intermedios.
+Por ejemplo, en la tabla \ref{table:2.4} vemos dos muestras de un dataset para un juego de mesa como las damas, donde podemos realizar diferentes acciones, no existiendo ninguna $100\%$ correcta. Aquí tendríamos como datos de entrada el estado de la partida y el movimiento a realizar, por lo que como salida tendríamos un nuevo estado y una medida de cómo le fue de bien a largo plazo al jugador, representada por $0.0$, la peor jugada posible; $1.0$, la mejor; y sus valores intermedios.
 
 \subsection{Aprendizaje no supervisado} \label{subsec:2.3.3}
 
-En el \emph{aprendizaje no supervisado} no disponemos de ninguna salida en el conjunto de datos, $|\mathcal{Y}|\:=\:0$, tan solo tenemos datos de entrada, $|\mathcal{X}|\:\geq\:1$. Nos podemos preguntar cómo podemos aprender de unos datos así, pero para ello tenemos que conocer cómo funcionan los problemas de \emph{agrupamiento} en machine learning, cosa que veremos en la sección \ref{sec:2.4} (\emph{\nameref{sec:2.4}}). Para hacer un adelanto, se puede pensar en problemas donde se tienen que clasificar libros por su temática sin conocerla previamente, solo fijándonos en propiedades similares que estos tengan para agruparlos en una categoría.
+En el \emph{aprendizaje no supervisado} no disponemos de ninguna salida en el conjunto de datos, $|\mathcal{Y}|\:=\:0$, tan solo tenemos datos de entrada, $|\mathcal{X}|\:\geq\:1$. Nos podemos preguntar cómo podemos aprender de unos datos así, pero para ello tenemos que conocer cómo funcionan los problemas de \emph{agrupamiento} en machine learning, cosa que veremos en la sección \ref{sec:2.4}. Para hacer un adelanto, se puede pensar en problemas donde se tienen que clasificar libros por su temática sin conocerla previamente, solo fijándonos en propiedades similares que estos tengan para agruparlos en una categoría.
 
 Este tipo de aprendizaje tiene una característica muy importante, puede descubrir patrones que eran desconocidos en los datos. Esto ocurre al no tener una definición previa, la salida, de lo que se quiere obtener.
 
 \subsection{Otros tipos de aprendizaje} \label{subsec:2.3.4}
 
-También podemos clasificar el aprendizaje según la forma de obtención de los datos, ya que lo común es tener todo el conjunto de datos listo antes de comenzar con el aprendizaje, aunque eso no siempre puede ser posible. Por ejemplo, existe un subtipo llamado \emph{aprendizaje activo}, donde el dataset es adquirido por medio de consultas.
+También podemos clasificar el aprendizaje según la forma de obtención de los datos, ya que lo común es tener todo el conjunto de datos listo antes de comenzar con el aprendizaje, aunque eso no siempre puede ser posible. Por ejemplo, existe un subtipo llamado \emph{aprendizaje activo}, donde el dataset es adquirido por medio de consultas durante el proceso de aprendizaje.
 
 Por otro lado, si el conjunto de datos se va incrementado en una instancia cada vez, por ejemplo, en mediciones de sensores, el aprendizaje pasaría a llamarse \emph{aprendizaje en línea}.
 
@@ -140,7 +140,7 @@ Los datos en un caso práctico de machine learning no solo afectan al tipo de ap
 
 \subsection{Agrupamiento} \label{subsec:2.4.1}
 
-Como vimos en la subsección \ref{subsec:2.3.3} (\emph{\nameref{subsec:2.3.3}}), el agrupamiento, \emph{clustering} en inglés, consiste en \emph{clasificar} sin usar la salida, sino fijándose en la \emph{similaridad} de las variables de entrada de cada instancia. Dependiendo del algoritmo de agrupamiento utilizado, esa similaridad será distinta. Una vez que el algoritmo haya finalizado su aprendizaje, tendremos las instancias agrupadas en distintos \emph{clusters}, donde cada elemento dentro de cada cluster será similar a los demás de ese mismo grupo. En la figura \ref{fig:2.2} tenemos un ejemplo donde cada cluster tiene un color distinto.
+Como vimos en la subsección \ref{subsec:2.3.3}, el agrupamiento, \emph{clustering} en inglés, consiste en \emph{clasificar} sin usar la salida, sino fijándose en la \emph{similaridad} de las variables de entrada de cada instancia. Dependiendo del algoritmo de agrupamiento utilizado, esa similaridad será distinta. Una vez que el algoritmo haya finalizado su aprendizaje, tendremos las instancias agrupadas en distintos \emph{clusters}, donde cada elemento dentro de cada cluster será similar a los demás de ese mismo grupo. En la figura \ref{fig:2.2} tenemos un ejemplo donde cada cluster tiene un color distinto.
 
 \begin{figure}[ht]
   \centering
@@ -149,7 +149,7 @@ Como vimos en la subsección \ref{subsec:2.3.3} (\emph{\nameref{subsec:2.3.3}}),
   \label{fig:2.2}
 \end{figure}
 
-En la subsección \ref{subsec:2.5.1} veremos las \emph{\nameref{subsec:2.5.1}}, uno de los algoritmos de agrupamiento, que puede devolver un agrupamiento como el de la figura \ref{fig:2.2} 
+En la subsección \ref{subsec:2.5.1} veremos las \emph{\nameref{subsec:2.5.1}}, uno de los algoritmos de agrupamiento, que puede devolver un agrupamiento como el de la figura \ref{fig:2.2}.
 
 \subsection{Clasificación} \label{subsec:2.4.2}
 
@@ -176,7 +176,7 @@ Los algoritmos que pueden resolver problemas de regresión son los mismos que lo
 
 \section{Algoritmos - Parte I} \label{sec:2.5}
 
-Hasta aquí se han visto algunas ideas generales sobre machine learning que hacen que ya se tengan ciertas ideas correctas en la cabeza, como por ejemplo cómo funciona a muy grandes rasgos un algoritmo de aprendizaje y cuáles son los datos de los que se puede alimentar.
+Hasta aquí se han visto algunos conceptos generales sobre machine learning que hacen que ya se tengan ciertas ideas correctas en la cabeza, como por ejemplo cómo funciona a muy grandes rasgos un algoritmo de aprendizaje y cuáles son los datos de los que se puede alimentar.
 
 A continuación estudiaremos cuatro de los principales algoritmos del aprendizaje automático, continuando con algunos más en el capítulo \ref{chap:3}.
 
@@ -273,7 +273,7 @@ Como se observa, la media ponderada hace que cada valor $x_i$ que se use para el
 
 La regresión lineal es un método que predice valores reales, no clasificaciones, como vimos en la subsección \ref{subsec:2.4.3}, aunque como se comentó anteriormente es posible transformarlo para clasificar. El concepto más importante de esta solución es el mismo que el de la recta de mínimos cuadrados. Nuestra función $g$ será, de entre todas las hipótesis en $\mathcal{H}$, una recta que minimice el error cuadrático\footnote{En la subsección \emph{\ref{subsec:3.2.3} \nameref{subsec:3.2.3}} se estudia la medida del error.} respecto a $f$\footnote{Recordar que $f$ era la función ideal que se busca en problemas de machine learning}, como el ejemplo que se muestra en la figura \ref{fig:2.4}.
 
-Cuando hablamos de una recta, significa que nuestro problema solo tiene dos dimensiones, una en $\mathcal{X}$ y otra en $\mathcal{Y}$. Conforme aumenta la dimensionalidad del problema, también aumentan el número de variables en el espacio de entrada $\mathcal{X}$ y dejamos de buscar un recta para buscar su generalización, el \emph{hiperplano}. Por ejemplo, si tenemos que $|\mathcal{X}|\:=\:2$, tenemos un problema de tres dimensiones y nos encontraríamos en el caso de buscar el plano de los mínimos cuadrados.
+Cuando hablamos de una recta, significa que nuestro problema solo tiene dos dimensiones, una en $\mathcal{X}$ y otra en $\mathcal{Y}$. Conforme aumenta la dimensionalidad del problema, también aumentan el número de variables en el espacio de entrada $\mathcal{X}$ y dejamos de buscar una recta para buscar su generalización, el \emph{hiperplano}. Por ejemplo, si tenemos que $|\mathcal{X}|\:=\:2$, tenemos un problema de tres dimensiones y nos encontraríamos en el caso de buscar el plano de los mínimos cuadrados.
 
 \begin{figure}[ht]
   \centering
@@ -340,15 +340,15 @@ y\:=\:ax\:+\:b
 $$
 
 \noindent
-donde ofreciendo la entrada que queremos predecir, $x$, nos devuelve la predicción $y$.
+donde ofreciendo la entrada que queremos predecir, $x$, nos devuelve una predicción, $y$.
 
-Los algoritmos de este tipo\footnote{Existe más regresiones muy usadas, como la \emph{regresión logística}.} son un caso extraño, ya que devuelven una ecuación que es fácil y muy rápida de evaluar, conviertiéndolos en unos regresores y clasificadores instantáneos.
+Los algoritmos de este tipo\footnote{Existen más regresiones muy usadas, como la \emph{regresión logística}.} son un caso extraño, ya que devuelven una ecuación que es fácil y muy rápida de evaluar, conviertiéndolos en unos regresores y clasificadores instantáneos.
 
 \subsection{Naive Bayes} \label{subsec:2.5.4}
 
 Naive Bayes es un algoritmo clasificador, aunque ajustándolo también puede funcionar como regresor, que utiliza la \emph{probabilidad} para ofrecer sus resultados. Veamos cómo funciona este sencillo algoritmo, aunque no podemos hacerlo paso por paso, ya que primero debemos conocer los simples pero potentes métodos que utiliza.
 
-Simplemente, naive Bayes calcula la probabilidad de todos los posibles valores de la variable de salida, partiendo de un valor para cada variable de entrada\footnote{Esta probabilidad se llama probabilidad condicionada, $P(A|B)$, que se lee probabilidad de que ocurra $A$ sabiendo que ocurre $B$.}, y se queda con la que tenga el máximo valor:
+Simplemente, naive Bayes calcula la probabilidad de todos los posibles valores de la variable de salida, partiendo de un valor para cada variable de entrada\footnote{Esta probabilidad se llama probabilidad condicionada, $P(A|B)$, y se lee como probabilidad de que ocurra $A$ sabiendo que ocurre $B$.}, y se queda con la que tenga el máximo valor:
 
 $$
 g(x_{i})\:=\:\max_{\forall\:y_{j}\:\in\:\mathcal{Y}}\:P(y_{j}|x_{i,\:1},\:x_{i,\:2},\:\dots,\:x_{i,\:n}):

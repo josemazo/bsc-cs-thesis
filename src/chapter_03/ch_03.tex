@@ -2,7 +2,7 @@
 
 \vspace*{5mm}
 
-En el capítulo anterior (\emph{\ref{chap:2}, \nameref{chap:2}}), estudiamos unas bases sobre que lo significa el aprendizaje automático, además de clasificar sus tipos y los problemas que puede resolver. Por último, en gran parte de ese capítulo estudiamos una selección de algoritmos de machine learngin que ampliaremos a continuación.
+En el capítulo anterior (\ref{chap:2}. \nameref{chap:2}), estudiamos unas bases sobre que lo significa el aprendizaje automático, además de clasificar sus tipos y los problemas que puede resolver. Por último, en gran parte de ese capítulo estudiamos una selección de algoritmos de machine learngin que ampliaremos a continuación.
 
 \section{Algoritmos - Parte II} \label{sec:3.1}
 
@@ -17,7 +17,7 @@ Los árboles de decisión son representaciones en forma de árbol surgidas como 
   \label{fig:3.1}
 \end{figure}
 
-Existen varias \emph{implementaciones} de estos árboles, pero aquí veremos una concreta, de las más fáciles de entender, el algoritmo \emph{ID3}. Sus siglas vienen de \emph{Iterative Dichotomiser 3}, \emph{Docotomizador Iterativo 3} en español, creado por Ross Quinlan en \citeyear{quinlan1986induction}, \cite{quinlan1986induction}. A continuación se describe el algoritmo ID3, que crea un árbol para clasificación binaria\footnote{Un problema de clasificación binaria es aquel en el que solo se disponen de dos clases para clasificar las instancias de $\mathcal{D}$, pudiendo ser también una clase y su negación.}, en el cual las dos clases son representadas con $+$, clase positiva, y $-$, clase negativa.
+Existen varias \emph{implementaciones} de estos árboles, pero aquí veremos una concreta, de las más fáciles de entender, el algoritmo \emph{ID3}. Sus siglas vienen de \emph{Iterative Dichotomiser 3}, \emph{Docotomizador Iterativo 3} en español, creado por Ross Quinlan en \citeyear{quinlan1986induction}, \cite{quinlan1986induction}. A continuación se describe este algoritmo, que crea un árbol para clasificación binaria\footnote{Un problema de clasificación binaria es aquel en el que solo se disponen de dos clases para clasificar las instancias de $\mathcal{D}$, pudiendo ser también una clase y su negación.}, en el cual las dos clases son representadas con $+$, clase positiva, y $-$, clase negativa.
 
 \vspace*{3mm}
 \lstset{style=pseudocode}
@@ -65,9 +65,9 @@ $$
 donde $a$ son los distintos valores de la variable $A$, y $\mathcal{D}_{i,\:a} $ es el subconjunto de $\mathcal{D}_{i}$ con $A\:=\:a$.
 \end{itemize}
 
-Así que, respondiendo a la pregunta sobre qué significa \emph{atributo que mejor clasifique}, sería un atributo $A$, de entre los existentes, que posee la mayor ganancia de información en el conjunto de ejemplos actuales $\mathcal{D}_{i}$, ($ejemplos$, también en el algoritmo). Otros algoritmos para la creación de árboles de decisión, como el \emph{CART}, miden la \emph{impureza} de los nodos mientras construyen el árbol, utilizando una técnica llamada impureza de Gini. Así, los nodos con menor impureza serán elegidos en cada paso del algoritmo.
+Así que, respondiendo a la pregunta sobre qué significa \emph{atributo que mejor clasifique}, sería un atributo $A$, de entre los existentes, que posee la mayor ganancia de información en el conjunto de ejemplos actuales $\mathcal{D}_{i}$, ($ejemplos$ en el algoritmo). Otros algoritmos para la creación de árboles de decisión, como el \emph{CART}, miden la \emph{impureza} de los nodos mientras construyen el árbol, utilizando una técnica llamada impureza de Gini. Así, los nodos con menor impureza serán elegidos en cada paso del algoritmo.
 
-Para finalizar, se puede comentar que existen técnicas que mejoran el rendimiento de los algoritmos que crean estos árboles, incluso procesos que mejoran los árboles ya creados, como la $poda$, que devuelve un árbol más pequeño con mejor rendimiento o el mismo árbol en el caso de que no se pueda podar.
+Para finalizar, se puede comentar que existen técnicas que mejoran el rendimiento de los algoritmos que crean estos árboles, incluso procesos que mejoran los árboles ya creados, como la $poda$, que devuelve un árbol más pequeño con mejor rendimiento, o el mismo árbol en el caso de que no se pueda podar.
 
 \subsection{Máquinas de soporte vectorial} \label{subsec:3.1.2}
 
@@ -100,7 +100,7 @@ serían los límites de dicho margen.
 
 Dados estos parámetros, solo tendríamos que minimizar la norma de $w$, $\lVert w \rVert$, y ajustar el desplazamiento $b$. Una herramienta para solucionar este problema son los \emph{multiplicadores de Lagrange}, una solución con una complejidad relativa mayor a lo que se encuentra en este documento. Con lo estudiado hasta aquí se puede llegar a comprender el funcionamiento general de las máquinas de soporte vectorial, aunque aún pueda surgir alguna que otra pregunta.
 
-Una de estas cuestiones podría ser la siguente: ¿qué ocurre si $\mathcal{D}$ no es linealmente separable? El método más común es aplicar una \emph{función kernel}, la cual transforma $\mathcal{X}$ añadiéndole más atributos, ($\mathcal{X}_{n\:+\:1}$, $\mathcal{X}_{n\:+\:2}$, \dots) para encontrar un hiperplano que separe los datos en ese nuevo espacio de atributos. En la figura \ref{fig:3.3} podemos apreciar un ejemplo de estas transformaciones, donde se mantiene la misma variable en el eje de ordenadas y se muestra una nueva en el de abscisas, consiguiendo una separación totalmente lineal en el conjunto de datos.
+Una de estas cuestiones podría ser la siguente: ¿qué ocurre si $\mathcal{D}$ no es linealmente separable? El método más común es aplicar una \emph{función kernel}, la cual transforma $\mathcal{X}$ añadiéndole más atributos, ($\mathcal{X}_{n\:+\:1}$, $\mathcal{X}_{n\:+\:2}$, \dots), para encontrar un hiperplano que separe los datos en ese nuevo espacio de atributos. En la figura \ref{fig:3.3} podemos apreciar un ejemplo de estas transformaciones, donde se mantiene la misma variable en el eje de ordenadas y se muestra una nueva en el de abscisas, consiguiendo una separación totalmente lineal en el conjunto de datos.
 
 \begin{figure}[ht]
   \centering
@@ -111,7 +111,7 @@ Una de estas cuestiones podría ser la siguente: ¿qué ocurre si $\mathcal{D}$ 
 
 \subsection{Redes neuronales artificiales} \label{subsec:3.1.3}
 
-Las redes neuronales artificiales son un modelo de machine learning inspirado en la biología, concretamente en el sistema nervioso central de los animales. Estas simulan una red de neuronas biológicas interconectadas, las cuales son capaces de computar una salida a partir de una señal de entrada, en nuestro caso todo sería instancias de $\mathcal{D}$.
+Las redes neuronales artificiales son un modelo de machine learning inspirado en la biología, concretamente en el sistema nervioso central de los animales. Estas simulan una red de neuronas biológicas interconectadas, las cuales son capaces de computar una salida a partir de una señal de entrada, en nuestro caso serían instancias de $\mathcal{D}$.
 
 \begin{figure}[ht]
   \centering
@@ -204,13 +204,13 @@ Las posibles razones del sobreaprendizaje para cierto modelo, incluyendo la elec
 \label{table:3.1}
 \end{table}
 
-En la subsección \emph{\ref{subsec:3.2.3} \nameref{subsec:3.2.3}}, hablaremos brevemente de nuevo sobre el sobreaprendizaje y cómo medirlo, esta vez como \emph{error} que es, y no como un concepto.
+En las siguientes subsecciones continuaremos nombrando al sobreaprendizaje, así conseguiremos mejorar el concepto que hemos obtenido, ya que es bastante importante para el aprendizaje automático.
 
 \subsection{Validación cruzada} \label{subsec:3.2.2}
 
 Aprender de un conjunto de datos y probar el rendimiento del modelo sobre el mismo conjunto es un error metodológico: el modelo podría haber aprendido perfectamente las instancias con las que fue entrenado y errar complemente en predicciones nuevas. Un grave error de sobreaprendizaje.
 
-Para evitar situaciones como ésta, la técnica más utilizada, llamada \emph{validación cruzada} o \emph{cross-validation} en inglés, consiste en dividir el conjunto en un subconjunto de aprendizaje, $\mathcal{D}_{apren}$, y en otro de validación o prueba, $\mathcal{D}_{val}$. Esto hace que podamos medir el rendimiento del modelo en un conjunto de datos no utilizados en el aprendizaje, y tener así una estimación de cómo se comportará posteriormente con datos reales. Un tamaño muy usado para $\mathcal{D}_{val}$ es utilizar el $10\%$ o el $20\%$ del tamaño total de $\mathcal{D}$, dejando el $90\%$ o el $80\%$ respectivamente para $\mathcal{D}_{apren}$. 
+Para evitar situaciones como ésta, la técnica más utilizada, llamada \emph{validación cruzada} o \emph{cross-validation} en inglés, consiste en dividir el conjunto en un subconjunto de aprendizaje, $\mathcal{D}_{apren}$, y en otro de validación o prueba, $\mathcal{D}_{val}$. Esto hace que podamos medir el rendimiento del modelo en un conjunto de datos no utilizados en el aprendizaje, y tener así una estimación de cómo se comportará posteriormente con datos reales. Un tamaño muy usado para $\mathcal{D}_{val}$ es utilizar el $10\%$ o el $20\%$ del tamaño total de $\mathcal{D}$, dejando el $90\%$ o el $80\%$ respectivamente para $\mathcal{D}_{apren}$.
 
 Existen ciertos ajustes para mejorar aún más la medida del rendimiento cuando se utiliza validación cruzada, siendo los más usados el llamado \emph{$k$-fold} y la \emph{estratificación}. $k$-fold consiste en dividir el conjunto de datos en $k$ subconjuntos de igual tamaño. Usando $k$-fold se necesitan realizar $k$ entrenamientos para medir el rendimiento, en los cuales $\mathcal{D}_{val}$ se irá alternando entre cada \emph{fold} creado, dejando el resto de particiones como un solo $\mathcal{D}_{val}$, como se muestra en la figura \ref{fig:3.7}. Unos valores para $k$ bastante utilizados son $5$ y $10$.
 
@@ -248,7 +248,7 @@ $$
 MSE\:=\:\frac{\sum_{i\:=\:1}^{|\mathcal{X}|}(g(x_{i})\:-\:f(x_{i}))^{2}}{N}
 $$
 
-Escoger uno u otro depende del tipo de datos encontrado en el espacio de salida, $\mathcal(Y)$, y en el modelo utilizado.
+Escoger uno u otro depende del tipo de datos encontrado en el espacio de salida, $\mathcal{Y}$, y en el modelo utilizado.
 
 Si queremos mejorar el resultado de la regresión a partir de la medida del error, necesitamos acercarnos a ciertas técnicas, siendo una de estas la compensación entre sesgo y varianza, o \emph{bias-variance trade-off} en inglés. El sesgo se puede describir como cuánto de impreciso ha sido el modelo, y la varianza como una medida de la sensibilidad del modelo a pequeños cambios irrelevantes en $\mathcal{D}$. Otra percepción importante del sesgo es compararlo con uno de los casos de sobreaprendizaje, en el que hayamos \emph{sesgado} los datos a solo los que cumplan ciertos requerimientos, perdiendo generalización para instancias reales.
 
@@ -275,7 +275,7 @@ Visto esto podemos afirmar lo que se comentó anteriormente, solo se puede trata
 
 Existen casos donde el error no se puede calcular a través de funciones como el error cuadrático medio. Estos casos son los problemas de clasificación, donde no tenemos una salida cuantitativa, sino cualitativa, teniendo que definir una nueva medida del rendimiento. Una de las medidas es la simple exactitud, \emph{accuracy} en inglés, que mide la proporción de instancias bien clasificadas, un valor entre $0$ y $1$.
 
-Algunos autores intentan obtener una medida del error en la clasificación, aunque ninguna de ellas está extendida, aunque en \cite{richert2013building} proponen una media del error:
+Algunos autores intentan obtener una medida del error en la clasificación, no estando extendida ninguna de ellas, aunque en \cite{richert2013building} se propone una posible forma de obtener esta medida:
 
 $$
 E\:=\:1\:-\:exactitud
@@ -414,7 +414,7 @@ Cuando se obtengan estos valores de la información mutua normalizada, $NI$, se 
 
 \section{Metodología} \label{sec:3.4}
 
-Para finalizar con los fundamentos teóricos del aprendizaje automático, tan solo falta estudiar una \emph{metodología} para saber cómo atacar un problema de machine learning. Una simple metodología consiste en seguir una serie de pasos como los que veremos a continuación, teniendo que repetir alguno si se consiguen resultados insatisfactorios:
+Para finalizar con estos fundamentos teóricos del aprendizaje automático, tan solo falta estudiar una \emph{metodología} para saber cómo atacar un problema de machine learning. Una simple metodología consiste en seguir una serie de pasos como los que veremos a continuación, teniendo que repetir alguno si se consiguen resultados insatisfactorios:
 
 \begin{enumerate}[label=\textbf{\arabic*.},start=1]
   \item \textbf{Obtener los datos.} En este paso, aparte de conseguir el dataset necesario, $\mathcal{D}$, se tendrá que elegir el objetivo del problema, si es que no se tiene de antemano.
