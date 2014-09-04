@@ -354,20 +354,20 @@ Se observa que el valor más repetido es sin duda el $20\%$, que en realidad cor
   \label{fig:5.16}
 \end{figure}
 
-Una vez hecho esto y ejecutado el algoritmo de aprendizaje con la misma configuración anterior, los resultados fueron muy distintos. $\mathbf{71.74\%}$ de exactitud, con la matriz de confusión de la figura \ref{fig:5.16}.
+Una vez hecho esto y ejecutado el algoritmo de aprendizaje con la misma configuración anterior, los resultados fueron muy distintos. $\mathbf{71.74\%}$ de exactitud, teniendo en cuenta que no se han podido usar datos sobre los pasajeros, información \emph{esencial} en un problema como este. Además, la matriz de confusión de la figura \ref{fig:5.16} luce bastante bien.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=136mm]{figures/ch_05/pr_auc.png}
+  \caption{Área bajo la curva P/R del aprendizaje de las 2 clases de propinas.}
+  \label{fig:5.17}
+\end{figure}
 
 Para el \emph{área bajo las curvas} \emph{P/R} y \emph{ROC} (figuras \ref{fig:5.17} y \ref{fig:5.18}) también se obtuvieron resultados muy buenos, parecidos al de la exactitud. Para P/R, se tiene un \emph{área} de $0.78$ para la clase ``$<\:20$'', y de $0.68$ para ``$>=\:20$''. Si nos fijamos en ROC, el \emph{área} es de $0.75$ para ambas clases.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=140mm]{figures/ch_05/pr_auc.png}
-  \caption{Área bajo la curva P/R del aprendizaje de las 2 clases de propinas.}
-  \label{fig:5.17}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=140mm]{figures/ch_05/roc_auc.png}
+  \includegraphics[width=136mm]{figures/ch_05/roc_auc.png}
   \caption{Área bajo la curva ROC del aprendizaje de las 2 clases de propinas.}
   \label{fig:5.18}
 \end{figure}
